@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">My Routes</string>
+    <string name="title_activity_maps">My Routes</string>
+
+    <!-- Generic Strings -->
+    <string name="lb_cancel">Cancel</string>
+    <string name="lb_ok">Ok</string>
+    <string name="lb_on">ON</string>
+    <string name="lb_off">OFF</string>
+    <string name="lb_my_journeys">My Journeys</string>
+
+    <!-- App keys -->
+    <string name="key_latitude">latitude</string>
+    <string name="key_longitude">longitude</string>
+    <string name="key_location_update">location_update</string>
+
+    <!-- MapsActivity -->
+    <string name="tt_new_journey">New Journey</string>
+    <string name="msg_new_journey">Give a name to your journey!</string>
+    <string name="msg_no_journey">No journeys to show.</string>
+    <string name="lb_tracking">Tracking </string>
+    <string name="val_tracking">OFF</string>
+    <string name="lb_new_journey">New Journey</string>
+    <string name="lb_finish_journey">Finish Journey</string>
+
+    <!-- LocalService -->
+    <string name="txt_notification">My Route is tracking you!</string>
+
+    <!-- SharedPreferences -->
+    <string name="lb_is_tracking">isTracking</string>
+    <string name="lb_is_journey_live">isJourneyLive</string>
+
+    <!-- Dialog Journey Detail -->
+    <string name="lb_start_date">START DATE/TIME</string>
+    <string name="lb_end_date">FINISH DATE/TIME</string>
+</resources>
