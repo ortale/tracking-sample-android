@@ -25,7 +25,7 @@ public class JourneysListDialogFragment extends DialogFragment {
     private ArrayList<Journey> journeyList;
 
     /**
-     * Sets default dialog properties and layout.
+     * Pass journey list as argument.
      *
      * @param journeyList
      */
@@ -39,12 +39,25 @@ public class JourneysListDialogFragment extends DialogFragment {
         return journeysListDialogFragment;
     }
 
+    /**
+     * Get list argument.
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         journeyList = (ArrayList<Journey>) getArguments().getSerializable(ProjectUtil.keyJourneyList);
     }
 
+    /**
+     * On list view item selected, call dialog to show its details.
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -40,7 +40,7 @@ public class JourneyDetailDialog extends DialogFragment implements OnMapReadyCal
     private SupportMapFragment mapFragment;
 
     /**
-     * Sets default dialog properties and layout.
+     * Pass journey object as argument.
      *
      * @param journey
      */
@@ -54,12 +54,25 @@ public class JourneyDetailDialog extends DialogFragment implements OnMapReadyCal
         return journeyDetailDialog;
     }
 
+    /**
+     * Get object argument.
+     *
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         journey = (Journey) getArguments().getSerializable(ProjectUtil.keyJourney);
     }
 
+    /**
+     * Add map fragment.
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,6 +100,11 @@ public class JourneyDetailDialog extends DialogFragment implements OnMapReadyCal
         return view;
     }
 
+    /**
+     * Remove map fragment to avoid double fragment inflate.
+     *
+     * @param dialog
+     */
     @Override
     public void onDismiss(DialogInterface dialog) {
         super.onDismiss(dialog);
@@ -96,6 +114,11 @@ public class JourneyDetailDialog extends DialogFragment implements OnMapReadyCal
         }
     }
 
+    /**
+     * On map ready, plots points to map.
+     *
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         PositionsController positionsController = new PositionsController(getActivity());
