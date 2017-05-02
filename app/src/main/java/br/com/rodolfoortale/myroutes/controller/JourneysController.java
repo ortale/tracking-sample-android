@@ -88,12 +88,12 @@ public class JourneysController {
      *
      * @return
      */
-    public List<Journey> getAll() {
+    public ArrayList<Journey> getAll() {
         databaseManager = DatabaseManager.getInstance(context);
         sqLiteDatabase = databaseManager.getReadableDatabase();
         String selectQuery = "SELECT * FROM " + DatabaseManager.TABLE_JOURNEYS;
         Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
-        List<Journey> journeys = new ArrayList<>();
+        ArrayList<Journey> journeys = new ArrayList<>();
 
         Log.v(TAG, "cursor: " + cursor.moveToFirst());
         if (cursor.moveToFirst()) {

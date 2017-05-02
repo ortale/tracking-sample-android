@@ -20,6 +20,12 @@ public class ProjectUtil {
     private static final String DATETIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
     private static final String OUTPUT_PATTERN = "dd/MM/yyyy HH:mm:ss";
 
+    public static final float ZOOM = 18.0f;
+
+    // Fragments' params
+    public static final String keyJourney = "journey";
+    public static final String keyJourneyList = "journeyList";
+
     /**
      * Sets default properties of a dialog.
      *
@@ -32,7 +38,6 @@ public class ProjectUtil {
         dialog.setContentView(layout);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        dialog.setCancelable(false);
 
         dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
             @Override

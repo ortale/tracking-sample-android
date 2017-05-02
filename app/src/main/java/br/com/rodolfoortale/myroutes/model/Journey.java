@@ -1,10 +1,12 @@
 package br.com.rodolfoortale.myroutes.model;
 
+import java.io.Serializable;
+
 /**
  * Class Journey - handles journey data.
  */
 
-public class Journey {
+public class Journey implements Serializable {
     private Long id;
     private String name;
     private String startTime;

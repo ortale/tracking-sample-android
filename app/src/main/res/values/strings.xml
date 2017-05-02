@@ -33,4 +33,6 @@
     <!-- Dialog Journey Detail -->
     <string name="lb_start_date">START DATE/TIME</string>
     <string name="lb_end_date">FINISH DATE/TIME</string>
+    <string name="lb_start_place">Start</string>
+    <string name="lb_finish_place">Finish</string>
 </resources>

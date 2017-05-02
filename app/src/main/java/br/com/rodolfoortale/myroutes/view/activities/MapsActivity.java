@@ -31,6 +31,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rodolfoortale.myroutes.R;
@@ -39,7 +40,7 @@ import br.com.rodolfoortale.myroutes.controller.PositionsController;
 import br.com.rodolfoortale.myroutes.model.Journey;
 import br.com.rodolfoortale.myroutes.service.LocalService;
 import br.com.rodolfoortale.myroutes.util.ProjectUtil;
-import br.com.rodolfoortale.myroutes.view.dialog.JourneysListDialog;
+import br.com.rodolfoortale.myroutes.view.dialog.JourneysListDialogFragment;
 
 /**
  * MapsActivity is responsible to provide all its map activity and user interactions.
@@ -52,7 +53,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private LatLng latLng;
     private LatLng oldLatLng;
-    private static final float ZOOM = 18;
     private GoogleApiClient mGoogleApiClient;
     private PolylineOptions polylineOptions;
 
@@ -153,14 +153,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 journeysController = new JourneysController(MapsActivity.this);
-                List<Journey> journeyList = journeysController.getAll();
+                ArrayList<Journey> journeyList = journeysController.getAll();
 
                 if (journeyList == null || journeyList.isEmpty()) {
                     Toast.makeText(MapsActivity.this, getString(R.string.msg_no_journey), Toast.LENGTH_SHORT).show();
                 }
 
                 else {
-                    new JourneysListDialog(MapsActivity.this, journeyList);
+                    JourneysListDialogFragment journeysListDialogFragment = JourneysListDialogFragment.newInstance(journeyList);
+                    journeysListDialogFragment.show(getSupportFragmentManager(), JourneysListDialogFragment.class.getSimpleName());
                 }
             }
         });
@@ -255,7 +256,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 latLng = new LatLng(latitude, longitude);
 
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, ZOOM));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, ProjectUtil.ZOOM));
 
                 if (oldLatLng == null) {
                     oldLatLng = latLng;
@@ -299,6 +300,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     /**
      * Handle UI information when track is off.
+     * Minimizes application
      */
     private void onTrackingOffUI() {
         txtTrack.setText(getString(R.string.lb_off));
@@ -339,7 +341,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             double longitude = mLastLocation.getLongitude();
 
             LatLng location = new LatLng(latitude, longitude);
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, ZOOM));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, ProjectUtil.ZOOM));
 
             journeysController = new JourneysController(MapsActivity.this);
 
