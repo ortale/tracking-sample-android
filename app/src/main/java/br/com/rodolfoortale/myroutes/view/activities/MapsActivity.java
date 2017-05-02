@@ -238,19 +238,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onResume() {
         super.onResume();
-        Log.v(TAG, "onResume!");
-
         journeysController = new JourneysController(MapsActivity.this);
 
         swtTrack.setOnCheckedChangeListener(null);
         swtTrack.setChecked(journeysController.isTracking());
         swtTrack.setOnCheckedChangeListener(onCheckedChangeListener);
 
+        if (journeysController.isTracking()) {
+            onTrackingOnUI();
+        }
+
+        else {
+            onTrackingOffUI();
+        }
+
         broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Log.v(TAG, "broadcastReceiver!");
-
                 Double latitude = (Double) intent.getExtras().get(getString(R.string.key_latitude));
                 Double longitude = (Double) intent.getExtras().get(getString(R.string.key_longitude));
 
